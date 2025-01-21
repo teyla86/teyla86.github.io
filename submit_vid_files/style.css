@@ -1,0 +1,125 @@
+/* text */
+.center {
+    text-align: center;
+}
+
+.right {
+    text-align: right;
+}
+
+.left {
+    text-align: left;
+}
+
+.small {
+    font-size: small;
+}
+
+/* basic padding */
+body {
+    padding: 10px 10% 0 10%;
+}
+
+.bottom-mar-1 {
+    margin: auto auto 1rem auto;
+}
+
+/* messages */
+
+ul.messagelist {
+    padding: 0;
+    margin: 0;
+}
+
+ul.messagelist li {
+    display: block;
+    font-weight: 400;
+    font-size: 0.8125rem;
+    padding: 10px 10px 10px 65px;
+    margin: 0 0 10px 0;
+    background: #9EDF9C;
+    background-size: 16px auto;
+    word-break: break-word;
+}
+
+ul.messagelist li.warning {
+    background: #E4C087;
+    background-size: 14px auto;
+}
+
+ul.messagelist li.error {
+    background: #C5705D;
+    background-size: 16px auto;
+}
+
+.urgent_deadline {
+    color: #9A473F;
+}
+
+
+.palette {
+    color: #9A473F
+#899CA0
+#CCC6B7
+#FEFEFD
+#0D0B0B
+}
+
+body {
+    background: #FEFEFD;
+    color: #0D0B0B;
+}
+
+.pure-button-primary {
+    background: #899CA0 !important;
+    color: #FEFEFD !important;
+}
+
+a {
+    color: #899CA0;
+    text-decoration: none;
+}
+
+header div.pure-g {
+    padding: 10px;
+}
+
+.logo {
+    padding: 1em;
+}
+
+nav ul {
+    margin-left: -40px;
+}
+
+header nav li {
+    display: inline;
+    background: #9A473F;
+    padding: 8px;
+}
+
+header nav a {
+    color: #CCC6B7;
+}
+
+footer nav li {
+    display: inline;
+    list-style-type: none;
+    padding-right: 15px;
+}
+
+.accordionTitle {
+	cursor: pointer;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.accordionTitle + .accordionContent {
+	display: none;
+}
+
+.accordionTitle.is-open + .accordionContent {
+	display: block;
+}

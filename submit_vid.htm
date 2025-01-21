@@ -1,0 +1,234 @@
+<!--con_mgm/templates/con_mgm/submit_vid.html-->
+<!--con_mgm/templates/base.html-->
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+        <title>Submit Vid</title>
+        <link rel="stylesheet" href="submit_vid_files/style.css">
+        <link rel="stylesheet" media="all" href="submit_vid_files/ckeditor_style.css">
+        <link rel="stylesheet" media="all" href="submit_vid_files/bootstrap5-extra.css">
+        <link rel="stylesheet" media="all" href="submit_vid_files/tailwind.css">
+        <link rel="stylesheet" href="submit_vid_files/pure-min.css" integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
+        <script src="submit_vid_files/bundle.js"></script>
+        <script src="submit_vid_files/scripts.js"></script>
+        
+            <script>
+                document.addEventListener('DOMContentLoaded', function () {
+                function updateTime(tz, el) {
+                el.innerHTML = new Date().toLocaleTimeString("en-GB", {timeZone: tz, timeStyle: 'short'});
+                };
+
+                function startClock(tzs, els) {
+                tzs.forEach(function (value, i) {
+                    updateTime(value, els[i]);
+                });
+                };
+
+                
+                    setInterval( startClock, 60*1000, ['Europe/London'], [document.getElementById('con_time')] );
+                
+                });
+            </script>
+        
+        
+  <script src="submit_vid_files/search-support.js"></script>
+
+        <meta name="robots" content="NONE,NOARCHIVE">
+    <style type="text/css">
+                .ck.fullscreen-mode .ck.ck-content.ck-editor__editable,
+                .ck.fullscreen-mode .ck.ck-editor__main {
+                    height: 100% !important;
+                    resize: none !important;
+                }
+                .ck.ck-editor.fullscreen-mode {
+                    display: flex;
+                    flex-direction: column;
+                }
+                .ck.ck-editor.fullscreen-style-activated {
+                    position: fixed;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 99999;
+                    width: 100vw;
+                    height: 100vh;
+                }
+        </style></head>
+    <body cz-shortcut-listen="true">
+        <header>
+            <div class="pure-g">
+                <div class="pure-u-1-3 left">
+                    <a href="http://localhost:8000/"><img class="logo" src="submit_vid_files/logo.png" width="50%"></a>
+                </div>
+                <div class="pure-u-1-3">
+                    
+                        <p>Next con: 30/05/2025 - 01/06/2025 | Con time: <span id="con_time">22:56</span></p>
+                        <p>Location: Bristol &amp; Online
+                        
+                        </p>
+                    
+                </div>
+                <div class="pure-u-1-3 right">
+                    
+                        
+                            <form id="logout-form" method="post" action="/accounts/logout/" class="pure-form">
+                                <input type="hidden" name="csrfmiddlewaretoken" value="AwYrTcjOEE8YFNgNj094kgmQCciEw4LsDHPlCqhmwq6DnySdovByevHB6jNVAXSg">
+                                <p><button type="submit" class="pure-button pure-button-primary">Logout</button></p>
+                            </form>
+                        
+                    
+                </div>
+            </div>
+            <nav>
+                <ul>
+                    <!--<li>Info Pages</li>-->
+                    
+                        
+                            <li><a href="http://localhost:8000/schedule/" class="">Schedule</a></li>
+                        
+                            <li><a href="http://localhost:8000/profile/" class="">Profile</a></li>
+                        
+                            <li><a href="http://localhost:8000/admin/" class="">Concom</a></li>
+                        
+                    
+                </ul>
+            </nav>
+        </header>
+        <section>
+            
+
+  
+    
+  
+
+  <form enctype="multipart/form-data" method="post" class="pure-form-stacked bottom-mar-1">
+    <input type="hidden" name="csrfmiddlewaretoken" value="AwYrTcjOEE8YFNgNj094kgmQCciEw4LsDHPlCqhmwq6DnySdovByevHB6jNVAXSg">
+    <div>
+        <label for="id_vidder_input_1">Vidder 1:</label>
+        <input type="text" form="" id="id_vidder_input_1" autocomplete="off" list="data-vidders">
+        <label for="id_vidder_input_2">Vidder 2:</label>
+        <input type="text" form="" id="id_vidder_input_2" autocomplete="off" list="data-vidders">
+        <label for="id_vidder_input_3">Vidder 3:</label>
+        <input type="text" form="" id="id_vidder_input_3" autocomplete="off" list="data-vidders">
+        <label for="id_vidder_input_4">Vidder 4:</label>
+        <input type="text" form="" id="id_vidder_input_4" autocomplete="off" list="data-vidders">
+        <button type="button" id="add-inputs">Add more vidders</button>
+    </div>
+    <div>
+    <label for="id_title">Title:</label>
+
+
+
+<input type="text" name="title" required="" id="id_title">
+    
+</div>
+
+  <div>
+    <label for="id_year">Year:</label>
+
+
+
+<input type="number" name="year" value="2025" min="1965" max="2025" id="id_year">
+    
+</div>
+
+  <div>
+    <label for="id_premiere">Premiere:</label>
+
+
+
+<input type="checkbox" name="premiere" id="id_premiere" checked="checked">
+    
+</div>
+
+  <div>
+    <label for="id_description" style="float: none;">Description:</label>
+
+
+
+<div class="ck-editor-container">
+<textarea name="description" class="django_ckeditor_5" id="id_description" data-processed="1" style="display: none;"></textarea><div class="ck ck-reset ck-editor ck-rounded-corners" role="application" dir="ltr" lang="en" aria-labelledby="ck-editor__label_e7ddbf50eb57ecbb2a0c1b83523e48da1"><label class="ck ck-label ck-voice-label" id="ck-editor__label_e7ddbf50eb57ecbb2a0c1b83523e48da1">Rich Text Editor</label><div class="ck ck-editor__top ck-reset_all" role="presentation"><div class="ck ck-sticky-panel"><div class="ck ck-sticky-panel__placeholder" style="display: none;"></div><div class="ck ck-sticky-panel__content"><div class="ck ck-toolbar ck-toolbar_grouping" role="toolbar" aria-label="Editor toolbar" tabindex="-1"><div class="ck ck-toolbar__items"><div class="ck ck-dropdown ck-heading-dropdown"><button class="ck ck-button ck-off ck-button_with-text ck-dropdown__button" type="button" tabindex="-1" aria-label="Paragraph, Heading" data-cke-tooltip-text="Heading" data-cke-tooltip-position="s" aria-haspopup="true" aria-expanded="false"><span class="ck ck-button__label">Paragraph</span><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-dropdown__arrow" viewBox="0 0 10 10"><path d="M.941 4.523a.75.75 0 1 1 1.06-1.06l3.006 3.005 3.005-3.005a.75.75 0 1 1 1.06 1.06l-3.549 3.55a.75.75 0 0 1-1.168-.136L.941 4.523z"></path></svg></button><div class="ck ck-reset ck-dropdown__panel ck-dropdown__panel_se" tabindex="-1"></div></div><span class="ck ck-toolbar__separator"></span><button class="ck ck-button ck-off" type="button" tabindex="-1" aria-pressed="false" aria-labelledby="ck-editor__aria-label_e1f6eb58ff0f94506ff3e1db0df0ea507" data-cke-tooltip-text="Bold (Ctrl+B)" data-cke-tooltip-position="s"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 20 20"><path d="M10.187 17H5.773c-.637 0-1.092-.138-1.364-.415-.273-.277-.409-.718-.409-1.323V4.738c0-.617.14-1.062.419-1.332.279-.27.73-.406 1.354-.406h4.68c.69 0 1.288.041 1.793.124.506.083.96.242 1.36.478.341.197.644.447.906.75a3.262 3.262 0 0 1 .808 2.162c0 1.401-.722 2.426-2.167 3.075C15.05 10.175 16 11.315 16 13.01a3.756 3.756 0 0 1-2.296 3.504 6.1 6.1 0 0 1-1.517.377c-.571.073-1.238.11-2 .11zm-.217-6.217H7v4.087h3.069c1.977 0 2.965-.69 2.965-2.072 0-.707-.256-1.22-.768-1.537-.512-.319-1.277-.478-2.296-.478zM7 5.13v3.619h2.606c.729 0 1.292-.067 1.69-.2a1.6 1.6 0 0 0 .91-.765c.165-.267.247-.566.247-.897 0-.707-.26-1.176-.778-1.409-.519-.232-1.31-.348-2.375-.348H7z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_e1f6eb58ff0f94506ff3e1db0df0ea507">Bold</span></button><button class="ck ck-button ck-off" type="button" tabindex="-1" aria-pressed="false" aria-labelledby="ck-editor__aria-label_ebfcca6b34e668f18234e13d90122f951" data-cke-tooltip-text="Italic (Ctrl+I)" data-cke-tooltip-position="s"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 20 20"><path d="m9.586 14.633.021.004c-.036.335.095.655.393.962.082.083.173.15.274.201h1.474a.6.6 0 1 1 0 1.2H5.304a.6.6 0 0 1 0-1.2h1.15c.474-.07.809-.182 1.005-.334.157-.122.291-.32.404-.597l2.416-9.55a1.053 1.053 0 0 0-.281-.823 1.12 1.12 0 0 0-.442-.296H8.15a.6.6 0 0 1 0-1.2h6.443a.6.6 0 1 1 0 1.2h-1.195c-.376.056-.65.155-.823.296-.215.175-.423.439-.623.79l-2.366 9.347z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_ebfcca6b34e668f18234e13d90122f951">Italic</span></button><button class="ck ck-button ck-off" type="button" tabindex="-1" aria-pressed="false" aria-labelledby="ck-editor__aria-label_e87e4e923f75821d3bc435b03da97e3d8" data-cke-tooltip-text="Link (Ctrl+K)" data-cke-tooltip-position="s"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 20 20"><path d="m11.077 15 .991-1.416a.75.75 0 1 1 1.229.86l-1.148 1.64a.748.748 0 0 1-.217.206 5.251 5.251 0 0 1-8.503-5.955.741.741 0 0 1 .12-.274l1.147-1.639a.75.75 0 1 1 1.228.86L4.933 10.7l.006.003a3.75 3.75 0 0 0 6.132 4.294l.006.004zm5.494-5.335a.748.748 0 0 1-.12.274l-1.147 1.639a.75.75 0 1 1-1.228-.86l.86-1.23a3.75 3.75 0 0 0-6.144-4.301l-.86 1.229a.75.75 0 0 1-1.229-.86l1.148-1.64a.748.748 0 0 1 .217-.206 5.251 5.251 0 0 1 8.503 5.955zm-4.563-2.532a.75.75 0 0 1 .184 1.045l-3.155 4.505a.75.75 0 1 1-1.229-.86l3.155-4.506a.75.75 0 0 1 1.045-.184z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_e87e4e923f75821d3bc435b03da97e3d8">Link</span></button><div class="ck ck-dropdown ck-list-styles-dropdown"><div class="ck ck-splitbutton ck-dropdown__button"><button class="ck ck-button ck-off ck-splitbutton__action" type="button" tabindex="-1" aria-pressed="false" aria-labelledby="ck-editor__aria-label_e4451fd5144d523597afaa78031df5a18" data-cke-tooltip-text="Bulleted List" data-cke-tooltip-position="s"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 20 20"><path d="M7 5.75c0 .414.336.75.75.75h9.5a.75.75 0 1 0 0-1.5h-9.5a.75.75 0 0 0-.75.75zm-6 0C1 4.784 1.777 4 2.75 4c.966 0 1.75.777 1.75 1.75 0 .966-.777 1.75-1.75 1.75C1.784 7.5 1 6.723 1 5.75zm6 9c0 .414.336.75.75.75h9.5a.75.75 0 1 0 0-1.5h-9.5a.75.75 0 0 0-.75.75zm-6 0c0-.966.777-1.75 1.75-1.75.966 0 1.75.777 1.75 1.75 0 .966-.777 1.75-1.75 1.75-.966 0-1.75-.777-1.75-1.75z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_e4451fd5144d523597afaa78031df5a18">Bulleted List</span></button><button class="ck ck-button ck-off ck-splitbutton__arrow" type="button" tabindex="-1" aria-labelledby="ck-editor__aria-label_efd8db8c2f9d249794cc6cbe1be764993" data-cke-tooltip-text="Bulleted List" data-cke-tooltip-position="s" aria-haspopup="true" aria-expanded="false"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 10 10"><path d="M.941 4.523a.75.75 0 1 1 1.06-1.06l3.006 3.005 3.005-3.005a.75.75 0 1 1 1.06 1.06l-3.549 3.55a.75.75 0 0 1-1.168-.136L.941 4.523z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_efd8db8c2f9d249794cc6cbe1be764993">Bulleted List</span></button></div><div class="ck ck-reset ck-dropdown__panel ck-dropdown__panel_se" tabindex="-1"></div></div><div class="ck ck-dropdown ck-list-styles-dropdown"><div class="ck ck-splitbutton ck-dropdown__button"><button class="ck ck-button ck-off ck-splitbutton__action" type="button" tabindex="-1" aria-pressed="false" aria-labelledby="ck-editor__aria-label_e5b7ef0a63c66471297a3a61eae025a52" data-cke-tooltip-text="Numbered List" data-cke-tooltip-position="s"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 20 20"><path d="M7 5.75c0 .414.336.75.75.75h9.5a.75.75 0 1 0 0-1.5h-9.5a.75.75 0 0 0-.75.75zM3.5 3v5H2V3.7H1v-1h2.5V3zM.343 17.857l2.59-3.257H2.92a.6.6 0 1 0-1.04 0H.302a2 2 0 1 1 3.995 0h-.001c-.048.405-.16.734-.333.988-.175.254-.59.692-1.244 1.312H4.3v1h-4l.043-.043zM7 14.75a.75.75 0 0 1 .75-.75h9.5a.75.75 0 1 1 0 1.5h-9.5a.75.75 0 0 1-.75-.75z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_e5b7ef0a63c66471297a3a61eae025a52">Numbered List</span></button><button class="ck ck-button ck-off ck-splitbutton__arrow" type="button" tabindex="-1" aria-labelledby="ck-editor__aria-label_e3868122386e1ed13a3c03f358da5be86" data-cke-tooltip-text="Numbered List" data-cke-tooltip-position="s" aria-haspopup="true" aria-expanded="false"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 10 10"><path d="M.941 4.523a.75.75 0 1 1 1.06-1.06l3.006 3.005 3.005-3.005a.75.75 0 1 1 1.06 1.06l-3.549 3.55a.75.75 0 0 1-1.168-.136L.941 4.523z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_e3868122386e1ed13a3c03f358da5be86">Numbered List</span></button></div><div class="ck ck-reset ck-dropdown__panel ck-dropdown__panel_se" tabindex="-1"></div></div><button class="ck ck-button ck-off" type="button" tabindex="-1" aria-pressed="false" aria-labelledby="ck-editor__aria-label_e8700c439861958e1e58eeacab6db8c0e" data-cke-tooltip-text="Block quote" data-cke-tooltip-position="s"><svg class="ck ck-icon ck-reset_all-excluded ck-icon_inherit-color ck-button__icon" viewBox="0 0 20 20"><path d="M3 10.423a6.5 6.5 0 0 1 6.056-6.408l.038.67C6.448 5.423 5.354 7.663 5.22 10H9c.552 0 .5.432.5.986v4.511c0 .554-.448.503-1 .503h-5c-.552 0-.5-.449-.5-1.003v-4.574zm8 0a6.5 6.5 0 0 1 6.056-6.408l.038.67c-2.646.739-3.74 2.979-3.873 5.315H17c.552 0 .5.432.5.986v4.511c0 .554-.448.503-1 .503h-5c-.552 0-.5-.449-.5-1.003v-4.574z"></path></svg><span class="ck ck-button__label" id="ck-editor__aria-label_e8700c439861958e1e58eeacab6db8c0e">Block quote</span></button></div></div></div></div></div><div class="ck ck-editor__main" role="presentation"><div class="ck-blurred ck ck-content ck-editor__editable ck-rounded-corners ck-editor__editable_inline" lang="en" dir="ltr" role="textbox" aria-label="Rich Text Editor. Editing area: main. Press Alt+0 for help." contenteditable="true"><p><br data-cke-filler="true"></p></div></div></div><span class="word-count" id="id_description_script-word-count"><div class="ck ck-word-count"><div class="ck-word-count__words">Words: 0</div><div class="ck-word-count__characters">Characters: 0</div></div></span>
+
+</div>
+<input type="hidden" id="id_description_script-ck-editor-5-upload-url" data-upload-url="/ckeditor5/image_upload/" data-upload-file-types="[&quot;jpeg&quot;, &quot;png&quot;, &quot;gif&quot;, &quot;bmp&quot;, &quot;webp&quot;, &quot;tiff&quot;]" data-csrf_cookie_name="csrftoken">
+
+<span id="id_description_script-span"><script id="id_description_script" type="application/json">{"toolbar": ["heading", "|", "bold", "italic", "link", "bulletedList", "numberedList", "blockQuote"]}</script></span>
+    
+</div>
+
+  <div>
+    <fieldset>
+  <legend>Mandatory Content Notes:</legend>
+
+
+
+<div id="id_content_notes"><div>
+    <label for="id_content_notes_0"><input type="checkbox" name="content_notes" value="1" id="id_content_notes_0">
+ Depiction of Police</label>
+
+</div><div>
+    <label for="id_content_notes_1"><input type="checkbox" name="content_notes" value="2" id="id_content_notes_1">
+ Blood/Gore</label>
+
+</div>
+</div></fieldset>
+    
+</div>
+
+  <div>
+    <label for="id_vidder_notes">Custom Notes:</label>
+
+
+
+<input type="text" name="vidder_notes" id="id_vidder_notes">
+    
+</div>
+
+  <div>
+    <label for="id_vid_link">Vid link:</label>
+
+
+
+<input type="text" name="vid_link" id="id_vid_link">
+    
+      <input type="hidden" name="vidshow_pk" value="2" id="id_vidshow_pk"><input type="hidden" name="new_orphan_vidders" id="id_new_orphan_vidders" value=""><input type="hidden" name="skip_duplicate_check" value="False" id="id_skip_duplicate_check"><input type="hidden" name="vidders" value="" id="id_vidders_0" label="teyla" data-pk="1" form=""><input type="hidden" name="vidders" value="" id="id_vidders_1" label="fajaqene" data-pk="2" form=""><input type="hidden" name="vidders" value="" id="id_vidders_2" label="absent" data-pk="3" form=""><input type="hidden" name="vidders" value="" id="id_vidders_3" label="findmeinthealps" data-pk="14" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_0" label="cokom28985" data-pk="191" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_1" label="putuwy" data-pk="193" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_2" label="wilamyhu" data-pk="194" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_3" label="puxelemo" data-pk="195" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_4" label="gibany" data-pk="196" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_5" label="mahahule" data-pk="197" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_6" label="fajaqene" data-pk="198" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_7" label="boherey" data-pk="192" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_8" label="testuser" data-pk="201" form=""><input type="hidden" name="new_user_vidders" value="" id="id_new_user_vidders_9" label="teyla" data-pk="1" form="">
+    
+</div>
+    <input type="submit" value="Next"> <a href="http://localhost:8000/" class="pure-button">Cancel</a>
+  </form>
+  
+
+        </section>
+        <footer>
+            <div class="pure-g">
+                <nav class="pure-u-1-3">
+                    <ul>
+                        
+                    </ul>
+                </nav>
+                <div class="pure-u-1-3"></div>
+                <div class="pure-u-1-3">
+                    
+                    
+                </div>
+            </div>
+        </footer>
+    
+
+
+<div style="display:none;">
+<svg id="bsky" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 452.263"><path fill="#0085FF" fill-rule="nonzero" d="M110.983 30.443C169.682 74.656 232.823 164.296 256 212.4v127.056c0-2.705-1.04.351-3.282 6.935-12.094 35.646-59.343 174.777-167.383 63.552-56.888-58.561-30.551-117.119 72.998-134.801-59.239 10.111-125.839-6.6-144.114-72.119C8.958 184.18 0 68.081 0 52.402 0-26.143 68.632-1.454 110.983 30.443zm290.034 0C342.318 74.656 279.177 164.296 256 212.4v127.056c0-2.705 1.04.351 3.282 6.935 12.094 35.646 59.343 174.777 167.383 63.552 56.888-58.561 30.551-117.119-72.998-134.801 59.239 10.111 125.839-6.6 144.114-72.119C503.042 184.18 512 68.081 512 52.402c0-78.545-68.624-53.856-110.983-21.959z"></path></svg>
+<svg id="tmblr" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 512 511.97"><g fill-rule="nonzero"><path fill="#272D3D" d="M409.76 0H102.24C46.05 0 0 46.02 0 102.24v307.5c0 56.22 46.05 102.23 102.24 102.23h307.52c56.19 0 102.24-46.01 102.24-102.23v-307.5C512 46.02 465.95 0 409.76 0z"></path><path fill="#FEFEFE" d="M344.19 415.45H290.2c-48.56 0-84.72-25-84.72-84.8V234.9h-44.16v-51.85c48.57-12.62 68.85-54.43 71.25-90.63h50.39v82.22h58.9v60.26h-58.9v83.37c0 25 12.66 33.64 32.69 33.64h28.54v63.54z"></path></g></svg>
+<svg id="dw" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+<path d="M0 0 C6.75 0.875 6.75 0.875 9 2 C9 2.66 9 3.32 9 4 C10.32 4 11.64 4 13 4 C13 4.66 13 5.32 13 6 C13.804375 6.226875 14.60875 6.45375 15.4375 6.6875 C18.24712425 7.72262472 20.51411687 8.77299482 23.08984375 10.234375 C23.88108643 10.67998779 24.6723291 11.12560059 25.48754883 11.5847168 C26.31665771 12.05176025 27.1457666 12.51880371 28 13 C29.66801671 13.92024562 31.33730165 14.83819601 33.0078125 15.75390625 C33.84957031 16.21603516 34.69132812 16.67816406 35.55859375 17.15429688 C37.2771833 18.09729769 38.99593477 19.04000345 40.71484375 19.98242188 C45.50252382 22.61160102 50.26665474 25.27415754 55 28 C55 28.66 55 29.32 55 30 C55.66 30 56.32 30 57 30 C58.49860495 32.99720989 58.16237874 36.07982293 58.16796875 39.3671875 C58.17220352 40.10931992 58.17643829 40.85145233 58.18080139 41.61607361 C58.19074007 44.03577244 58.19071284 46.45528424 58.1875 48.875 C58.18689575 49.69777435 58.1862915 50.52054871 58.18566895 51.36825562 C58.16098497 63.68691581 57.85095973 75.80105735 56 88 C55.86577637 88.91491211 55.73155273 89.82982422 55.59326172 90.77246094 C53.78478012 102.82499945 51.32985072 114.43350469 47.61572266 126.0390625 C46.57267321 129.36093924 45.632974 132.71180523 44.6875 136.0625 C44.36136719 137.20847656 44.03523437 138.35445312 43.69921875 139.53515625 C43.46847656 140.34855469 43.23773438 141.16195312 43 142 C42.34 142 41.68 142 41 142 C40.7834375 143.423125 40.7834375 143.423125 40.5625 144.875 C40 148 40 148 39 150 C38.34 150 37.68 150 37 150 C36.7834375 151.423125 36.7834375 151.423125 36.5625 152.875 C36 156 36 156 35 158 C34.34 158 33.68 158 33 158 C33 159.32 33 160.64 33 162 C32.34 162 31.68 162 31 162 C30.01 164.97 30.01 164.97 29 168 C28.34 168 27.68 168 27 168 C26.71125 168.763125 26.4225 169.52625 26.125 170.3125 C25 173 25 173 23 176 C22.34 176 21.68 176 21 176 C20.9175 176.5775 20.835 177.155 20.75 177.75 C19.78202213 180.6539336 18.31305716 182.03740604 16 184 C15.34 184 14.68 184 14 184 C13.67 184.99 13.34 185.98 13 187 C8.58359523 187.48160015 4.16683086 187.95982463 -0.25 188.4375 C-1.48492187 188.57220703 -2.71984375 188.70691406 -3.9921875 188.84570312 C-9.92355357 189.48566631 -15.85671928 190.10715012 -21.796875 190.66015625 C-22.75432617 190.75047119 -23.71177734 190.84078613 -24.69824219 190.93383789 C-27 191 -27 191 -29 190 C-29 189.34 -29 188.68 -29 188 C-27.68 188 -26.36 188 -25 188 C-25 187.34 -25 186.68 -25 186 C-21.91190305 184.23537317 -20.76687864 184 -17 184 C-17 183.34 -17 182.68 -17 182 C-11.25 179 -11.25 179 -9 179 C-9 178.34 -9 177.68 -9 177 C-7.68 176.67 -6.36 176.34 -5 176 C-5 175.34 -5 174.68 -5 174 C-4.34 174 -3.68 174 -3 174 C-3 173.34 -3 172.68 -3 172 C-2.34 172 -1.68 172 -1 172 C-1 171.34 -1 170.68 -1 170 C-0.34 170 0.32 170 1 170 C1 169.34 1 168.68 1 168 C1.66 168 2.32 168 3 168 C3.41765625 167.15695313 3.41765625 167.15695313 3.84375 166.296875 C4.61884055 164.75716811 5.41078092 163.22583595 6.21875 161.703125 C11.57522403 151.44743691 14.21461299 140.82070286 11.3125 129.26171875 C9.18387335 123.70068163 6.20706116 118.51622154 3.26953125 113.34765625 C2 111 2 111 1 108 C0.34 108 -0.32 108 -1 108 C-1 107.34 -1 106.68 -1 106 C-1.86625 105.71125 -2.7325 105.4225 -3.625 105.125 C-6.75 104.08333333 -9.875 103.04166667 -13 102 C-13 101.34 -13 100.68 -13 100 C-15.68893267 100.08771546 -18.37485308 100.19467925 -21.0625 100.3125 C-21.81466797 100.33505859 -22.56683594 100.35761719 -23.34179688 100.38085938 C-28.49737727 100.6263632 -32.29603658 101.70991254 -37 104 C-38.72597695 104.71607055 -40.4548158 105.42531512 -42.1875 106.125 C-43.41533203 106.62386719 -43.41533203 106.62386719 -44.66796875 107.1328125 C-46.76808201 107.91375914 -48.81658838 108.50810497 -51 109 C-51 109.66 -51 110.32 -51 111 C-52.98 111.495 -52.98 111.495 -55 112 C-55 112.66 -55 113.32 -55 114 C-55.61875 114.0825 -56.2375 114.165 -56.875 114.25 C-59.18437567 114.81258459 -59.18437567 114.81258459 -60.25 117.0625 C-60.4975 117.701875 -60.745 118.34125 -61 119 C-61.66 119 -62.32 119 -63 119 C-63 119.99 -63 120.98 -63 122 C-63.66 122 -64.32 122 -65 122 C-65.4803318 123.58298026 -65.95921612 125.16639978 -66.4375 126.75 C-66.70433594 127.63171875 -66.97117187 128.5134375 -67.24609375 129.421875 C-69.76858569 138.04801323 -69.38139547 145.36744141 -67 154 C-67 155.32 -67 156.64 -67 158 C-66.34 158 -65.68 158 -65 158 C-65 158.66 -65 159.32 -65 160 C-64.34 160 -63.68 160 -63 160 C-63 160.99 -63 161.98 -63 163 C-61.68 163.66 -60.36 164.32 -59 165 C-59 165.66 -59 166.32 -59 167 C-51.18996717 169.49921051 -42.11583995 170.81623172 -34.23828125 168.01953125 C-29.70230058 165.58284742 -25.35640801 162.71281603 -23 158 C-22.34 158 -21.68 158 -21 158 C-19.90073468 149.22073238 -20.21384413 142.35846762 -23 134 C-25.01508358 133.26676204 -25.01508358 133.26676204 -27 133 C-27 132.34 -27 131.68 -27 131 C-33.57315478 130.63482473 -38.79485526 131.86380263 -45 134 C-45 134.66 -45 135.32 -45 136 C-45.66 136 -46.32 136 -47 136 C-47 141.94 -47 147.88 -47 154 C-48.32 153.67 -49.64 153.34 -51 153 C-51 152.01 -51 151.02 -51 150 C-51.66 150 -52.32 150 -53 150 C-54.74039663 145.48325636 -55.27087296 141.70708948 -55.25 136.875 C-55.25515625 135.67617187 -55.2603125 134.47734375 -55.265625 133.2421875 C-55.0177204 130.21629313 -54.59019672 128.53674239 -53 126 C-52.34 126 -51.68 126 -51 126 C-50.938125 125.38125 -50.87625 124.7625 -50.8125 124.125 C-50 122 -50 122 -47.4375 120.75 C-46.633125 120.5025 -45.82875 120.255 -45 120 C-45 119.34 -45 118.68 -45 118 C-38.71475249 115.20655666 -30.97632493 114.60159827 -24.4453125 116.8984375 C-22.25 118 -22.25 118 -19 120 C-19 120.66 -19 121.32 -19 122 C-17.7934375 122.4021875 -17.7934375 122.4021875 -16.5625 122.8125 C-15.716875 123.204375 -14.87125 123.59625 -14 124 C-13.67 124.99 -13.34 125.98 -13 127 C-11.515 127.495 -11.515 127.495 -10 128 C-9.67 129.98 -9.34 131.96 -9 134 C-8.01 134.33 -7.02 134.66 -6 135 C-3.77695058 144.00243153 -1.99440602 155.65050513 -7 164 C-7.66 164 -8.32 164 -9 164 C-9.144375 164.61875 -9.28875 165.2375 -9.4375 165.875 C-10 168 -10 168 -11 170 C-11.66 170 -12.32 170 -13 170 C-13 170.66 -13 171.32 -13 172 C-13.66 172 -14.32 172 -15 172 C-15 172.66 -15 173.32 -15 174 C-15.66 174 -16.32 174 -17 174 C-17 174.66 -17 175.32 -17 176 C-27.1891898 181.4719723 -37.25226716 185.32917229 -48.7421875 181.875 C-52.20159573 180.68425537 -55.60706247 179.36890851 -59 178 C-59 177.34 -59 176.68 -59 176 C-60.32 175.67 -61.64 175.34 -63 175 C-63 174.34 -63 173.68 -63 173 C-64.32 172.67 -65.64 172.34 -67 172 C-67 171.34 -67 170.68 -67 170 C-67.66 170 -68.32 170 -69 170 C-69 169.34 -69 168.68 -69 168 C-69.66 168 -70.32 168 -71 168 C-71 167.34 -71 166.68 -71 166 C-71.66 166 -72.32 166 -73 166 C-73 165.34 -73 164.68 -73 164 C-73.66 164 -74.32 164 -75 164 C-75.66 162.02 -76.32 160.04 -77 158 C-77.66 158 -78.32 158 -79 158 C-84.82172606 142.36450716 -86.79394899 127.37384641 -79.91015625 111.484375 C-78.99763721 109.62686294 -78.0080128 107.80747123 -77 106 C-76.34 106 -75.68 106 -75 106 C-74.835 105.319375 -74.67 104.63875 -74.5 103.9375 C-71.70328633 98.46060239 -66.55429293 94.52807504 -61 92 C-61 91.34 -61 90.68 -61 90 C-57.91190305 88.23537317 -56.76687864 88 -53 88 C-53 87.34 -53 86.68 -53 86 C-41.76499264 80.01839886 -25.3266107 78.52487077 -13 82 C-13 82.66 -13 83.32 -13 84 C-12.14148438 83.938125 -11.28296875 83.87625 -10.3984375 83.8125 C-6.43390263 84.03123296 -4.11188706 85.1403269 -0.625 87 C0.43460937 87.556875 1.49421875 88.11375 2.5859375 88.6875 C3.38257812 89.120625 4.17921875 89.55375 5 90 C5 90.66 5 91.32 5 92 C6.98 92.66 8.96 93.32 11 94 C11 94.66 11 95.32 11 96 C11.66 96 12.32 96 13 96 C13 96.66 13 97.32 13 98 C13.66 98 14.32 98 15 98 C15 98.66 15 99.32 15 100 C15.66 100 16.32 100 17 100 C17 100.66 17 101.32 17 102 C17.66 102 18.32 102 19 102 C19.61979734 74.26215591 12.84174233 46.43447371 5 20 C4.24490467 17.41810165 3.49681976 14.83431874 2.75 12.25 C2.43546875 11.18265625 2.1209375 10.1153125 1.796875 9.015625 C1.00582388 6.0220394 0.45817995 3.06064209 0 0 Z " fill="#B60007" transform="translate(113,4)"></path>
+<path d="M0 0 C0 0.66 0 1.32 0 2 C0.825 1.9175 1.65 1.835 2.5 1.75 C7.01303847 2.07235989 10.11795056 3.79294651 14 6 C14 6.66 14 7.32 14 8 C12.02 8 10.04 8 8 8 C8 7.34 8 6.68 8 6 C6.02 6 4.04 6 2 6 C2 5.34 2 4.68 2 4 C-7.24 4 -16.48 4 -26 4 C-26 4.66 -26 5.32 -26 6 C-27.98 6 -29.96 6 -32 6 C-32 6.66 -32 7.32 -32 8 C-33.32 8 -34.64 8 -36 8 C-36 8.66 -36 9.32 -36 10 C-37.32 10 -38.64 10 -40 10 C-40 10.66 -40 11.32 -40 12 C-40.66 12 -41.32 12 -42 12 C-42 12.66 -42 13.32 -42 14 C-43.32 14 -44.64 14 -46 14 C-46 14.66 -46 15.32 -46 16 C-46.66 16 -47.32 16 -48 16 C-48 16.66 -48 17.32 -48 18 C-48.66 18 -49.32 18 -50 18 C-50 18.66 -50 19.32 -50 20 C-50.66 20 -51.32 20 -52 20 C-52 20.66 -52 21.32 -52 22 C-52.66 22 -53.32 22 -54 22 C-54 22.66 -54 23.32 -54 24 C-54.66 24 -55.32 24 -56 24 C-56 24.66 -56 25.32 -56 26 C-56.66 26 -57.32 26 -58 26 C-58 27.32 -58 28.64 -58 30 C-58.66 30 -59.32 30 -60 30 C-60 31.32 -60 32.64 -60 34 C-60.66 34 -61.32 34 -62 34 C-62 35.32 -62 36.64 -62 38 C-62.66 38 -63.32 38 -64 38 C-64 39.98 -64 41.96 -64 44 C-64.66 44 -65.32 44 -66 44 C-66 50.6 -66 57.2 -66 64 C-65.34 64 -64.68 64 -64 64 C-64 65.98 -64 67.96 -64 70 C-63.34 70 -62.68 70 -62 70 C-62 71.98 -62 73.96 -62 76 C-61.34 76 -60.68 76 -60 76 C-60 76.66 -60 77.32 -60 78 C-59.34 78 -58.68 78 -58 78 C-58 79.32 -58 80.64 -58 82 C-57.34 82 -56.68 82 -56 82 C-56 82.66 -56 83.32 -56 84 C-55.34 84 -54.68 84 -54 84 C-54 85.32 -54 86.64 -54 88 C-54.66 88 -55.32 88 -56 88 C-56 87.34 -56 86.68 -56 86 C-56.66 86 -57.32 86 -58 86 C-58 85.34 -58 84.68 -58 84 C-58.66 84 -59.32 84 -60 84 C-60 83.34 -60 82.68 -60 82 C-60.66 82 -61.32 82 -62 82 C-62.99 79.03 -62.99 79.03 -64 76 C-64.66 76 -65.32 76 -66 76 C-71.82172606 60.36450716 -73.79394899 45.37384641 -66.91015625 29.484375 C-65.99763721 27.62686294 -65.0080128 25.80747123 -64 24 C-63.34 24 -62.68 24 -62 24 C-61.835 23.319375 -61.67 22.63875 -61.5 21.9375 C-58.70328633 16.46060239 -53.55429293 12.52807504 -48 10 C-48 9.34 -48 8.68 -48 8 C-44.91190305 6.23537317 -43.76687864 6 -40 6 C-40 5.34 -40 4.68 -40 4 C-28.76499264 -1.98160114 -12.3266107 -3.47512923 0 0 Z " fill="#E80010" transform="translate(100,86)"></path>
+<path d="M0 0 C2.31 0.33 4.62 0.66 7 1 C7 3.97 7 6.94 7 10 C7.66 10 8.32 10 9 10 C9 11.98 9 13.96 9 16 C9.66 16 10.32 16 11 16 C11 18.64 11 21.28 11 24 C11.66 24 12.32 24 13 24 C13 25.98 13 27.96 13 30 C13.66 30 14.32 30 15 30 C15 32.64 15 35.28 15 38 C15.66 38 16.32 38 17 38 C17 41.96 17 45.92 17 50 C17.66 50 18.32 50 19 50 C19 52.64 19 55.28 19 58 C19.66 58 20.32 58 21 58 C21 60.64 21 63.28 21 66 C21.66 66 22.32 66 23 66 C23 71.94 23 77.88 23 84 C23.66 84 24.32 84 25 84 C25 94.56 25 105.12 25 116 C24.34 116 23.68 116 23 116 C23 114.68 23 113.36 23 112 C22.34 112 21.68 112 21 112 C20.87995605 110.7531543 20.75991211 109.50630859 20.63623047 108.22167969 C18.32689551 84.50741457 16.00986889 61.11177766 10 38 C9.6592041 36.68080566 9.6592041 36.68080566 9.31152344 35.33496094 C7.96467463 30.19551286 6.5109094 25.09326794 5 20 C4.24490467 17.41810165 3.49681976 14.83431874 2.75 12.25 C2.43546875 11.18265625 2.1209375 10.1153125 1.796875 9.015625 C1.00582388 6.0220394 0.45817995 3.06064209 0 0 Z " fill="#E8000F" transform="translate(113,4)"></path>
+<path d="M0 0 C1.32 0 2.64 0 4 0 C4 0.66 4 1.32 4 2 C4.66 2 5.32 2 6 2 C6 3.32 6 4.64 6 6 C6.66 6 7.32 6 8 6 C8 12.6 8 19.2 8 26 C7.34 26 6.68 26 6 26 C6 27.32 6 28.64 6 30 C5.34 30 4.68 30 4 30 C4 30.66 4 31.32 4 32 C3.34 32 2.68 32 2 32 C2 32.66 2 33.32 2 34 C1.34 34 0.68 34 0 34 C0 34.66 0 35.32 0 36 C-1.32 36 -2.64 36 -4 36 C-4 36.66 -4 37.32 -4 38 C-5.32 38 -6.64 38 -8 38 C-8 38.66 -8 39.32 -8 40 C-14.6 40 -21.2 40 -28 40 C-28 39.34 -28 38.68 -28 38 C-29.32 38 -30.64 38 -32 38 C-32 37.34 -32 36.68 -32 36 C-32.66 36 -33.32 36 -34 36 C-34 35.34 -34 34.68 -34 34 C-33.15050781 34.15726563 -32.30101562 34.31453125 -31.42578125 34.4765625 C-22.64134516 35.81876824 -14.42266427 36.3900102 -6.7734375 31.37109375 C-3.93618199 29.17753277 -1.61462896 27.22925791 0 24 C0.66 24 1.32 24 2 24 C3.09926532 15.22073238 2.78615587 8.35846762 0 0 Z " fill="#E7000F" transform="translate(90,138)"></path>
+<path d="M0 0 C0.66 0 1.32 0 2 0 C2 6.6 2 13.2 2 20 C1.34 20 0.68 20 0 20 C0 21.98 0 23.96 0 26 C-0.66 26 -1.32 26 -2 26 C-2 27.32 -2 28.64 -2 30 C-2.66 30 -3.32 30 -4 30 C-4 30.66 -4 31.32 -4 32 C-4.66 32 -5.32 32 -6 32 C-6 33.32 -6 34.64 -6 36 C-6.66 36 -7.32 36 -8 36 C-8 36.66 -8 37.32 -8 38 C-8.66 38 -9.32 38 -10 38 C-10 38.66 -10 39.32 -10 40 C-10.66 40 -11.32 40 -12 40 C-12 40.66 -12 41.32 -12 42 C-12.66 42 -13.32 42 -14 42 C-14 42.66 -14 43.32 -14 44 C-14.66 44 -15.32 44 -16 44 C-16 44.66 -16 45.32 -16 46 C-17.32 46 -18.64 46 -20 46 C-20 46.66 -20 47.32 -20 48 C-20.66 48 -21.32 48 -22 48 C-22 48.66 -22 49.32 -22 50 C-23.32 50 -24.64 50 -26 50 C-26 50.66 -26 51.32 -26 52 C-27.32 52 -28.64 52 -30 52 C-30 52.66 -30 53.32 -30 54 C-30.66 54 -31.32 54 -32 54 C-32 54.66 -32 55.32 -32 56 C-34.73905345 57.36952673 -36.97087332 57.12621361 -40 57 C-40.66 56.67 -41.32 56.34 -42 56 C-42 55.34 -42 54.68 -42 54 C-40.68 54 -39.36 54 -38 54 C-38 53.34 -38 52.68 -38 52 C-34.91190305 50.23537317 -33.76687864 50 -30 50 C-30 49.34 -30 48.68 -30 48 C-24.25 45 -24.25 45 -22 45 C-22 44.34 -22 43.68 -22 43 C-20.02 42.505 -20.02 42.505 -18 42 C-18 41.34 -18 40.68 -18 40 C-17.34 40 -16.68 40 -16 40 C-16 39.34 -16 38.68 -16 38 C-15.34 38 -14.68 38 -14 38 C-14 37.34 -14 36.68 -14 36 C-13.34 36 -12.68 36 -12 36 C-12 35.34 -12 34.68 -12 34 C-11.34 34 -10.68 34 -10 34 C-9.7215625 33.43796875 -9.443125 32.8759375 -9.15625 32.296875 C-8.38115945 30.75716811 -7.58921908 29.22583595 -6.78125 27.703125 C-1.92842896 18.41174813 -0.66077564 10.43329957 0 0 Z " fill="#E7000F" transform="translate(126,138)"></path>
+<path d="M0 0 C1.0725 0.66 2.145 1.32 3.25 2 C3.25 2.66 3.25 3.32 3.25 4 C1.93 4 0.61 4 -0.75 4 C-0.75 3.34 -0.75 2.68 -0.75 2 C-5.37 2 -9.99 2 -14.75 2 C-14.75 2.66 -14.75 3.32 -14.75 4 C-16.73 4 -18.71 4 -20.75 4 C-20.75 4.66 -20.75 5.32 -20.75 6 C-21.41 6 -22.07 6 -22.75 6 C-22.75 6.66 -22.75 7.32 -22.75 8 C-23.41 8 -24.07 8 -24.75 8 C-24.75 8.66 -24.75 9.32 -24.75 10 C-25.41 10 -26.07 10 -26.75 10 C-26.75 10.66 -26.75 11.32 -26.75 12 C-27.41 12 -28.07 12 -28.75 12 C-28.75 13.32 -28.75 14.64 -28.75 16 C-29.41 16 -30.07 16 -30.75 16 C-30.688125 17.918125 -30.688125 17.918125 -30.625 19.875 C-30.5546875 22.0546875 -30.5546875 22.0546875 -30.75 24 C-31.41 24.66 -32.07 25.32 -32.75 26 C-32.804138 23.75026553 -32.84285491 21.50015617 -32.875 19.25 C-32.89820313 17.99703125 -32.92140625 16.7440625 -32.9453125 15.453125 C-32.76537302 12.27179508 -32.43998582 10.63478104 -30.75 8 C-30.09 8 -29.43 8 -28.75 8 C-28.688125 7.38125 -28.62625 6.7625 -28.5625 6.125 C-27.75 4 -27.75 4 -25.1875 2.75 C-24.383125 2.5025 -23.57875 2.255 -22.75 2 C-22.75 1.34 -22.75 0.68 -22.75 0 C-15.63335332 -3.16295408 -7.01271843 -3.51883736 0 0 Z " fill="#E90011" transform="translate(90.75,122)"></path>
+<path d="M0 0 C3.48670834 1.1094072 6.77484237 2.26337666 10 4 C10 4.66 10 5.32 10 6 C8.02 6 6.04 6 4 6 C4 5.34 4 4.68 4 4 C2.02 4 0.04 4 -2 4 C-2 3.34 -2 2.68 -2 2 C-1.34 2 -0.68 2 0 2 C0 1.34 0 0.68 0 0 Z " fill="#DB000B" transform="translate(104,88)"></path>
+</svg>
+<svg id="undefined" xmlns="http://www.w3.org/2000/svg" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" image-rendering="optimizeQuality" fill-rule="evenodd" clip-rule="evenodd" viewBox="0 0 414 512.01"><path d="M35.95 0h213.36v146.7c0 5.51 4.47 9.98 9.98 9.98H414v319.39c0 9.83-4.04 18.81-10.55 25.34l-.08.08c-6.53 6.49-15.49 10.52-25.31 10.52H35.95c-9.9 0-18.89-4.04-25.4-10.55C4.04 494.95 0 485.96 0 476.07V35.94c0-9.89 4.04-18.88 10.55-25.39C17.06 4.04 26.05 0 35.95 0zm233.33 2.23a13.2 13.2 0 012.49 2.17l136.55 132.31H269.28V2.23zM91.31 419.73c-5.52 0-9.99-4.47-9.99-9.98 0-5.51 4.47-9.99 9.99-9.99h231.38c5.52 0 9.99 4.48 9.99 9.99s-4.47 9.98-9.99 9.98H91.31zm0-76.35c-5.52 0-9.99-4.47-9.99-9.98 0-5.52 4.47-9.99 9.99-9.99h227.78c5.52 0 9.99 4.47 9.99 9.99 0 5.51-4.47 9.98-9.99 9.98H91.31zm0-76.35c-5.52 0-9.99-4.47-9.99-9.99 0-5.51 4.47-9.98 9.99-9.98h184.31c5.51 0 9.99 4.47 9.99 9.98 0 5.52-4.48 9.99-9.99 9.99H91.31zm0-76.36c-5.52 0-9.99-4.47-9.99-9.98 0-5.52 4.47-9.99 9.99-9.99h102.9c5.52 0 9.99 4.47 9.99 9.99 0 5.51-4.47 9.98-9.99 9.98H91.31zm0-76.35c-5.52 0-9.99-4.47-9.99-9.99 0-5.51 4.47-9.98 9.99-9.98h55.41c5.52 0 9.99 4.47 9.99 9.98 0 5.52-4.47 9.99-9.99 9.99H91.31z"></path></svg>
+<div id="search-data"><datalist id="data-vidders"><option value="teyla"></option><option value="fajaqene"></option><option value="absent"></option><option value="findmeinthealps"></option><option value="cokom28985"></option><option value="putuwy"></option><option value="wilamyhu"></option><option value="puxelemo"></option><option value="gibany"></option><option value="mahahule"></option><option value="boherey"></option><option value="testuser"></option></datalist><datalist id="data-vidders"><option value="teyla"></option><option value="fajaqene"></option><option value="absent"></option><option value="findmeinthealps"></option><option value="cokom28985"></option><option value="putuwy"></option><option value="wilamyhu"></option><option value="puxelemo"></option><option value="gibany"></option><option value="mahahule"></option><option value="boherey"></option><option value="testuser"></option></datalist></div>
+</div><div class="ck-body-wrapper"><div class="ck ck-reset_all ck-body ck-rounded-corners" dir="ltr" role="application"><div class="ck ck-clipboard-drop-target-line ck-hidden"></div><div class="ck ck-aria-live-announcer"><div aria-live="polite" aria-relevant="additions"><ul class="ck ck-aria-live-region-list"></ul></div><div aria-live="assertive" aria-relevant="additions"><ul class="ck ck-aria-live-region-list"></ul></div></div></div></div></body></html>
